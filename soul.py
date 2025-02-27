@@ -16,16 +16,16 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
 loop = asyncio.get_event_loop()
 
-TOKEN = '7748107712:AAHMiaeRINd97AJQdrwHYSClel7qZ9x5Tkk'
+TOKEN = '7596392885:AAEWlLXYYfl5FZG1Q89v9ku-71VvAc64Dsc'
 MONGO_URI = 'mongodb+srv://Bishal:Bishal@bishal.dffybpx.mongodb.net/?retryWrites=true&w=majority&appName=Bishal'
-FORWARD_CHANNEL_ID = -1002156421934
-CHANNEL_ID = -1002156421934
-error_channel_id = -1002156421934
+FORWARD_CHANNEL_ID = 5738170480
+CHANNEL_ID = 5738170480
+error_channel_id = 5738170480
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
-db = client['zoya']
+db = client['zoy']
 users_collection = db.users
 
 bot = telebot.TeleBot(TOKEN)
@@ -73,7 +73,7 @@ def is_user_admin(user_id, chat_id):
 def approve_or_disapprove_user(message):
     user_id = message.from_user.id
     chat_id = message.chat.id
-    is_admin = is_user_admin(user_id, CHANNEL_ID)
+    is_admin = True
     cmd_parts = message.text.split()
 
     if not is_admin:
